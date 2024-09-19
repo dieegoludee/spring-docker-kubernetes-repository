@@ -11,7 +11,7 @@
 	<artifactId>msvc-cursos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>msvc-cursos</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Spring Cloud Microservicio Cursos</description>
 	<url/>
 	<licenses>
 		<license/>
