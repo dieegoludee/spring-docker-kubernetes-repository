@@ -25,7 +25,7 @@ public class UsuarioController {
   public ResponseEntity<?> detalle(@PathVariable Long id) {
     Optional<Usuario> usuarioOptional = usuarioService.buscarPorId(id);
     if (usuarioOptional.isPresent()) {
-      return ResponseEntity.ok(usuarioOptional.get());
+      return ResponseEntity.ok(usuarioOptional.orElseThrow());
     }
     return ResponseEntity.notFound().build();
   }
@@ -45,7 +45,7 @@ public class UsuarioController {
   public ResponseEntity<?> editarUsuario(@RequestBody Usuario usuario, @PathVariable Long id) {
     Optional<Usuario> usuarioOptional = usuarioService.buscarPorId(id);
     if (usuarioOptional.isPresent()) {
-      Usuario usuarioDb = usuarioOptional.get();
+      Usuario usuarioDb = usuarioOptional.orElseThrow();
       usuarioDb.setNombre(usuario.getNombre());
       usuarioDb.setEmail(usuario.getEmail());
       usuarioDb.setPassword(usuario.getPassword());

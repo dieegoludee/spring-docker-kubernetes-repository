@@ -25,11 +25,9 @@ public class CursoController {
   @GetMapping("/{id}")
   public ResponseEntity<?> listarPorId(@PathVariable Long id) {
     Optional<Curso> optionalCurso = cursoService.buscarPorId(id);
-    if(optionalCurso.isPresent()) {
-      return ResponseEntity.ok(optionalCurso.get());
+    if (optionalCurso.isPresent()) {
+      return ResponseEntity.ok(optionalCurso.orElseThrow());
     }
     return ResponseEntity.notFound().build();
   }
-
-
 }
