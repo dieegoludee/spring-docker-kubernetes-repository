@@ -9,10 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class UsuarioController {
@@ -45,6 +42,10 @@ public class UsuarioController {
     if (result.hasErrors()) {
       return validate(result);
     }
+    if (!usuario.getEmail().isEmpty() && usuarioService.existePorEmail(usuario.getEmail())) {
+      return ResponseEntity.badRequest()
+              .body(Collections.singletonMap("mensaje", "Ya existe un usuario con ese correo electrónico"));
+    }
     return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.guardar(usuario));
   }
 
@@ -57,6 +58,12 @@ public class UsuarioController {
     Optional<Usuario> usuarioOptional = usuarioService.buscarPorId(id);
     if (usuarioOptional.isPresent()) {
       Usuario usuarioDb = usuarioOptional.orElseThrow();
+
+      if (!usuario.getEmail().isEmpty() && !usuario.getEmail().equalsIgnoreCase(usuarioDb.getEmail()) && usuarioService.buscarPorEmail(usuario.getEmail()).isPresent()) {
+        return ResponseEntity.badRequest()
+                .body(Collections.singletonMap("mensaje", "Ya existe un usuario con ese correo electrónico"));
+      }
+
       usuarioDb.setNombre(usuario.getNombre());
       usuarioDb.setEmail(usuario.getEmail());
       usuarioDb.setPassword(usuario.getPassword());
