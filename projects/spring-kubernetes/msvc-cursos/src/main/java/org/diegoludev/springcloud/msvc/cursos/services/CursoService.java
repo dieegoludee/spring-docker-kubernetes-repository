@@ -1,6 +1,6 @@
 package org.diegoludev.springcloud.msvc.cursos.services;
 
-import org.diegoludev.springcloud.msvc.cursos.entities.Curso;
+import org.diegoludev.springcloud.msvc.cursos.models.entity.Curso;
 
 import java.util.List;
 import java.util.Optional;

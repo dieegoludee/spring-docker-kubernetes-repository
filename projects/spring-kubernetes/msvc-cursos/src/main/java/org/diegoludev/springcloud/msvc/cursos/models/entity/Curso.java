@@ -1,7 +1,8 @@
-package org.diegoludev.springcloud.msvc.cursos.entities;
+package org.diegoludev.springcloud.msvc.cursos.models.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import org.diegoludev.springcloud.msvc.cursos.models.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +19,15 @@ public class Curso {
   private String nombre;
 
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  @JoinColumn(name = "curso_id")
   private List<CursoUsuario> cursoUsuarios;
+
+  @Transient
+  private List<Usuario> usuarios;
 
   public Curso() {
     cursoUsuarios = new ArrayList<>();
+    usuarios = new ArrayList<>();
   }
 
   public Long getId() {
@@ -40,11 +46,11 @@ public class Curso {
     this.nombre = nombre;
   }
 
-  public List<CursoUsuario> getCursoUsuario() {
+  public List<CursoUsuario> getCursoUsuarios() {
     return cursoUsuarios;
   }
 
-  public void setCursoUsuario(List<CursoUsuario> cursoUsuario) {
+  public void setCursoUsuarios(List<CursoUsuario> cursoUsuario) {
     this.cursoUsuarios = cursoUsuario;
   }
 
@@ -56,5 +62,13 @@ public class Curso {
   // Método para eliminar un usuario del ArrayList
   public void removeCursoUsuario(CursoUsuario cursoUsuario) {
     cursoUsuarios.remove(cursoUsuario);
+  }
+
+  public List<Usuario> getUsuarios() {
+    return usuarios;
+  }
+
+  public void setUsuarios(List<Usuario> usuarios) {
+    this.usuarios = usuarios;
   }
 }

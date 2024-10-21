@@ -1,7 +1,7 @@
 package org.diegoludev.springcloud.msvc.cursos.controllers;
 
 import jakarta.validation.Valid;
-import org.diegoludev.springcloud.msvc.cursos.entities.Curso;
+import org.diegoludev.springcloud.msvc.cursos.models.entity.Curso;
 import org.diegoludev.springcloud.msvc.cursos.services.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

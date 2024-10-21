@@ -1,4 +1,4 @@
-package org.diegoludev.springcloud.msvc.cursos.entities;
+package org.diegoludev.springcloud.msvc.cursos.models.entity;
 
 import jakarta.persistence.*;
 
