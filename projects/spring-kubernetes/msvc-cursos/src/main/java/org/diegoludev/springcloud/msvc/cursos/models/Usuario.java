@@ -1,10 +1,5 @@
 package org.diegoludev.springcloud.msvc.cursos.models;
 
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-
 public class Usuario {
   private Long id;
 

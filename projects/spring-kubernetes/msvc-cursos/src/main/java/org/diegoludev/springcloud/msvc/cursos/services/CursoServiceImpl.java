@@ -1,5 +1,6 @@
 package org.diegoludev.springcloud.msvc.cursos.services;
 
+import org.diegoludev.springcloud.msvc.cursos.models.Usuario;
 import org.diegoludev.springcloud.msvc.cursos.models.entity.Curso;
 import org.diegoludev.springcloud.msvc.cursos.repositories.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,20 @@ public class CursoServiceImpl implements CursoService {
   @Transactional
   public void eliminarCurso(Long id) {
     cursoRepository.deleteById(id);
+  }
+
+  @Override
+  public Optional<Usuario> asignarUsuario(Usuario usuario, Long idCurso) {
+    return Optional.empty();
+  }
+
+  @Override
+  public Optional<Usuario> crearUsuario(Usuario usuario, Long idCurso) {
+    return Optional.empty();
+  }
+
+  @Override
+  public Optional<Usuario> eliminarUsuario(Usuario usuario, Long idCurso) {
+    return Optional.empty();
   }
 }
